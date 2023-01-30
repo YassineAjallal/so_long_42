@@ -17,7 +17,7 @@ clean:
 	@rm -f $(OBJ)
 	@echo "libft : OBJ deleted"
 
-fclean: clean
+fclean:
 	@rm -f $(NAME)
 	@echo "$(NAME) deleted"
 

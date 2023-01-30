@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/28 15:24:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/01/30 19:34:37 by yajallal         ###   ########.fr       */
+/*   Created: 2022/10/21 03:34:19 by yajallal          #+#    #+#             */
+/*   Updated: 2023/01/30 19:43:55 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-#define SO_LONG_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+#include "../libft/libft.h"
 
-#include "./libft/libft.h"
-#include <mlx.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include "./get_next_line/get_next_line.h"
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
-int	ft_checkex(char *file);
+# include <stdlib.h>
+# include <unistd.h>
+
+char	*get_next_line(int fd);
+char	*ft_read(int fd, char *save);
+char	*ft_copy(char *save);
+char	*ft_getnews(char *save);
+
 #endif

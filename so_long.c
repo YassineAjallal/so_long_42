@@ -6,13 +6,13 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:57:28 by yajallal          #+#    #+#             */
-/*   Updated: 2023/01/28 15:39:41 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/01/30 19:54:55 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+// #include "so_long.h"
 
-int main()
-{
-	printf("return : %d\n", ft_checkex("yassine.ber"));
-}
+// int main()
+// {
+// 	printf("return : %d\n", ft_checkex("yassine.ber"));
+// }
