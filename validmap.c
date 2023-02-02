@@ -6,45 +6,11 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 19:30:06 by yajallal          #+#    #+#             */
-/*   Updated: 2023/01/30 20:25:29 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/02 16:15:03 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int numberline(char **map)
-{
-	int i;
-
-	i = 0;
-	while(map[i])
-		i++;
-	return (i);
-}
-
-char **readmap(char *path)
-{
-	int i;
-	int fd;
-	int j;
-	char **lines;
-
-	i = 0;
-	j = 0;
-	fd = open(path, O_RDONLY);
-	while (get_next_line(fd) != NULL)
-		i++;
-	close(fd);
-	lines = malloc(sizeof(char *) * (i + 1));
-	fd = open(path, O_RDONLY);
-	while (j < i)
-	{
-		lines[j] = get_next_line(fd);
-		j++;
-	}
-	lines[j] = NULL;
-	return (lines);
-}
 
 int ft_strlennl(char *str)
 {
@@ -94,11 +60,11 @@ int checkwall(char **map)
 	int linelen;
 	
 	len = numberline(map);
-	i = 0;
+	i = 1;
 	
 	if (!isequal(map[0]) || !isequal(map[len - 1]) || !checklen(map))
 		return (0);
-	while (i < len)
+	while (i < len - 1)
 	{
 		linelen = ft_strlen(map[i]);
 		if (map[i][0] != '1' || map[i][linelen - 2] != '1')
@@ -109,11 +75,45 @@ int checkwall(char **map)
 	
 }
 
-int main()
+int checkchar(char **map)
 {
 	int i;
-	char **map;
+	int j;
+	int player;
+	int exit;
+	int collect;
 
-	map = readmap("./map_files/invalid.ber");
-	printf("%d\n", checkwall(map));
+	i = 0;
+	player = 0;
+	exit = 0;
+	collect = 0;
+
+	while(map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] != 'C' && map[i][j] != 'P' && map[i][j] != 'E' && map[i][j] != '1' && map[i][j] != '0')
+				return (0);
+			if (map[i][j] == 'C')
+				collect++;
+			else if (map[i][j] == 'P')
+				player++;
+			else if (map[i][j] == 'E')
+				exit++;
+			j++;
+		}
+		i++;
+	}
+	if (collect < 1 || player != 1 || exit != 1)
+		return (0);
+	return (1);
 }
+// int main()
+// {
+// 	int i;
+// 	char **map;
+
+// 	map = readmap("./map_files/map_0.ber");
+// 	printf("%d\n", checkchar(map));
+// }
