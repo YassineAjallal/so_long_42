@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:24:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/04 14:45:46 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/04 15:20:32 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_read(int fd, char *save);
 char	*ft_copy(char *save);
 char	*ft_getnews(char *save);
 
-// so_long
+// so_long.c
 
 int	ft_checkex(char *file);
 
@@ -45,4 +45,7 @@ int checkchar(char **map);
 int checklen(char **map);
 int isequal(char *line);
 int ft_strlennl(char *str);
+
+// arrays.c 
+void	ft_free2d(char **str);
 #endif

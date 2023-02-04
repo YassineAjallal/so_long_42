@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkex.c                                          :+:      :+:    :+:   */
+/*   arrays.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/28 15:22:14 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/04 14:55:25 by yajallal         ###   ########.fr       */
+/*   Created: 2023/01/13 12:22:22 by yajallal          #+#    #+#             */
+/*   Updated: 2023/02/04 15:20:05 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_checkex(char *file)
+void	ft_free2d(char **str)
 {
-	char *tmp;
-	tmp = file + (ft_strlen(file) - 4);
-	if (ft_strnstr(tmp, ".ber", 4))
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str);
+	str = NULL;
 }

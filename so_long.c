@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:57:28 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/04 14:49:06 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/04 15:35:40 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int main(int ac, char **av)
 	{
 		ft_putstr_fd("Error\n", 2);
 		ft_putstr_fd("Invalid PATH in map\n", 2);
+		pause();
 		exit(EXIT_FAILURE);
 	}
 }
