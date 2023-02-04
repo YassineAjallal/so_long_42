@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 19:30:06 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/04 15:31:00 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/04 20:12:12 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,12 @@ int checkwall(char **map)
 	i = 1;
 	
 	if (!isequal(map[0]) || !isequal(map[len - 1]) || !checklen(map))
-	{
-		ft_free2d(map);
 		return (0);
-	}
 	while (i < len - 1)
 	{
 		linelen = ft_strlennl(map[i]);
 		if (map[i][0] != '1' || map[i][linelen - 1] != '1')
-		{
-			ft_free2d(map);
 			return (0);	
-		}
 		i++;
 	}
 	return (1);
@@ -100,7 +94,6 @@ int checkchar(char **map)
 			if (map[i][j] != 'C' && map[i][j] != 'P' && map[i][j] != 'E' && map[i][j] != '1' 
 				&& map[i][j] != '0')
 			{
-				ft_free2d(map);
 				return (0);
 			}
 			if (map[i][j] == 'C')
@@ -114,9 +107,6 @@ int checkchar(char **map)
 		i++;
 	}
 	if (collect < 1 || player != 1 || exit != 1)
-	{
-		ft_free2d(map);
 		return (0);
-	}
 	return (1);
 }

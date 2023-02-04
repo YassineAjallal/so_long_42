@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:56:21 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/02 15:04:20 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/04 20:14:24 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,18 @@ char **readmap(char *path)
 	int fd;
 	int j;
 	char **lines;
+	char *line;
 
 	i = 0;
 	j = 0;
 	fd = open(path, O_RDONLY);
-	while (get_next_line(fd) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
 		i++;
+		free(line);
+		line = get_next_line(fd);
+	}
 	close(fd);
 	lines = malloc(sizeof(char *) * (i + 1));
 	if (!lines)
@@ -45,5 +51,6 @@ char **readmap(char *path)
 		j++;
 	}
 	lines[j] = NULL;
+	close(fd);
 	return (lines);
 }
