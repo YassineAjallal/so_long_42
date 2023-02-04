@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 16:23:23 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/04 14:29:43 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/04 14:41:00 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void ft_replace(char **map)
 	}
 }
 
-void ft_checkpath(char **map)
+void ft_fill(char **map)
 {
 	int i;
 
@@ -57,7 +57,7 @@ int ft_checkvalid(char **map)
 	int i;
 	int j;
 
-	ft_checkpath(map);
+	ft_fill(map);
 	i = 0;
 	while(map[i])
 	{

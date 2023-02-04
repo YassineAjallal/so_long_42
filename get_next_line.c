@@ -6,11 +6,11 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 03:34:16 by yajallal          #+#    #+#             */
-/*   Updated: 2023/01/30 19:48:12 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/04 14:46:17 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "so_long.h"
 
 char	*ft_read(int fd, char *save)
 {
