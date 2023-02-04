@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 19:30:06 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/02 16:15:03 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/04 14:30:11 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int isequal(char *line)
 	
 	while(i < ft_strlen(line) - 1)
 	{
-		if (line[i] != line[0])
+		if (line[i] != '1')
 			return (0);
 		i++;
 	}
@@ -87,7 +87,6 @@ int checkchar(char **map)
 	player = 0;
 	exit = 0;
 	collect = 0;
-
 	while(map[i])
 	{
 		j = 0;
@@ -109,11 +108,3 @@ int checkchar(char **map)
 		return (0);
 	return (1);
 }
-// int main()
-// {
-// 	int i;
-// 	char **map;
-
-// 	map = readmap("./map_files/map_0.ber");
-// 	printf("%d\n", checkchar(map));
-// }
