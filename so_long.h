@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:24:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/04 15:20:32 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/05 00:50:35 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,8 @@ int ft_strlennl(char *str);
 
 // arrays.c 
 void	ft_free2d(char **str);
+
+// window.c
+void ft_window(char **map, void *mlx);
+void ft_wall(char **map, void *mlx, void *mlx_win);
 #endif

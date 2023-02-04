@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 16:23:23 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/04 20:12:33 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/05 00:23:56 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void ft_fill(char **map)
 {
 	int i;
 
-	i = 1;
+	i = 0;
 	while(i < numberline(map))
 	{
 		ft_replace(map);
