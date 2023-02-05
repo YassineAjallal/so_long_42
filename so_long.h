@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:24:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/05 00:50:35 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/05 14:56:47 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,18 @@
 #include <fcntl.h>
 
 
+typedef struct s_game 
+{
+	char **map;
+	void *mlx;
+	void *mlx_win;
+	void *player;
+	void *coin;
+	void *wall;
+	void *door;
+	int img_width;
+	int img_height;
+} t_game;
 // get_next_line
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
@@ -50,6 +62,6 @@ int ft_strlennl(char *str);
 void	ft_free2d(char **str);
 
 // window.c
-void ft_window(char **map, void *mlx);
-void ft_wall(char **map, void *mlx, void *mlx_win);
+void ft_window(t_game *game);
+void ft_wall(t_game *game);
 #endif

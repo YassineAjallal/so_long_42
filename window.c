@@ -6,53 +6,46 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 00:12:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/05 14:26:02 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/05 14:59:49 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void ft_window(char **map, void *mlx)
+void ft_window(t_game *game)
 {
 	int line;
-	void	*mlx_win;
 	int len;
 
-	line = numberline(map);
-	len = ft_strlennl(map[0]);
-	mlx_win = mlx_new_window(mlx, len * 50, line * 50, "so_long");
-	ft_wall(map, mlx, mlx_win);
+	line = numberline(game->map);
+	len = ft_strlennl(game->map[0]);
+	game->mlx_win = mlx_new_window(game->mlx, len * 50, line * 50, "so_long");
+	ft_wall(game);
 }
 
-void ft_wall(char **map, void *mlx, void *mlx_win)
+void ft_wall(t_game *game)
 {
-	void *wall;
-	void *pacman;
-	void *coin;
-	void *door;
-	int		img_width;
-	int		img_height;
 	int 	i;
 	int 	j;
 	
 	i = 0;
-	wall = mlx_xpm_file_to_image(mlx, "./image/walls.xpm", &img_width, &img_height);
-	pacman = mlx_xpm_file_to_image(mlx, "./image/zombie.xpm", &img_width, &img_height);
-	coin = mlx_xpm_file_to_image(mlx, "./image/food.xpm", &img_width, &img_height);
-	door = mlx_xpm_file_to_image(mlx, "./image/door.xpm", &img_width, &img_height);
-	while (map[i])
+	game->wall = mlx_xpm_file_to_image(game->mlx, "./image/walls.xpm", &game->img_width, &game->img_height);
+	game->player = mlx_xpm_file_to_image(game->mlx, "./image/zombie.xpm", &game->img_width, &game->img_height);
+	game->coin = mlx_xpm_file_to_image(game->mlx, "./image/food.xpm", &game->img_width, &game->img_height);
+	game->door = mlx_xpm_file_to_image(game->mlx, "./image/door.xpm", &game->img_width, &game->img_height);
+	while (game->map[i])
 	{
 		j = 0;
-		while(map[i][j])
+		while(game->map[i][j])
 		{
-			if (map[i][j] == '1')
-				mlx_put_image_to_window(mlx, mlx_win, wall, j * 50, i * 50);
-			else if (map[i][j] == 'P')
-				mlx_put_image_to_window(mlx, mlx_win, pacman, j * 50, i * 50);
-			else if (map[i][j] == 'C')
-				mlx_put_image_to_window(mlx, mlx_win, coin, j * 50, i * 50);
-			else if (map[i][j] == 'E')
-				mlx_put_image_to_window(mlx, mlx_win, door, j * 50, i * 50);
+			if (game->map[i][j] == '1')
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->wall, j * 50, i * 50);
+			else if (game->map[i][j] == 'P')
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->player, j * 50, i * 50);
+			else if (game->map[i][j] == 'C')
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->coin, j * 50, i * 50);
+			else if (game->map[i][j] == 'E')
+				mlx_put_image_to_window(game->mlx,game-> mlx_win, game->door, j * 50, i * 50);
 			j++;
 		}
 		i++;

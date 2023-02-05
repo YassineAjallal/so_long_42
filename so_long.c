@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:57:28 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/05 14:22:52 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/05 15:00:41 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 int main(int ac, char **av)
 {
 	char **map;
+	t_game *game;
 	
 	if (ac != 2)
 	{
@@ -45,9 +46,13 @@ int main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 	ft_free2d(map);
-	map = readmap(av[1]);
-	void	*mlx;
-	mlx = mlx_init();
-	ft_window(map, mlx);
-	mlx_loop(mlx);
+
+ 	/*--------------------------*/
+	game = malloc(sizeof(t_game));
+	if (!game)
+		return (0);
+	game->map = readmap(av[1]);
+	game->mlx = mlx_init();
+	ft_window(game);
+	mlx_loop(game->mlx);
 }
