@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 00:12:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/05 14:59:49 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/05 16:43:35 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void ft_wall(t_game *game)
 	game->player = mlx_xpm_file_to_image(game->mlx, "./image/zombie.xpm", &game->img_width, &game->img_height);
 	game->coin = mlx_xpm_file_to_image(game->mlx, "./image/food.xpm", &game->img_width, &game->img_height);
 	game->door = mlx_xpm_file_to_image(game->mlx, "./image/door.xpm", &game->img_width, &game->img_height);
+	game->background = mlx_xpm_file_to_image(game->mlx, "./image/background.xpm", &game->img_width, &game->img_height);
 	while (game->map[i])
 	{
 		j = 0;
@@ -41,11 +42,17 @@ void ft_wall(t_game *game)
 			if (game->map[i][j] == '1')
 				mlx_put_image_to_window(game->mlx, game->mlx_win, game->wall, j * 50, i * 50);
 			else if (game->map[i][j] == 'P')
+			{
+				game->posx = j;
+				game->posy = i;
 				mlx_put_image_to_window(game->mlx, game->mlx_win, game->player, j * 50, i * 50);
+			}
 			else if (game->map[i][j] == 'C')
 				mlx_put_image_to_window(game->mlx, game->mlx_win, game->coin, j * 50, i * 50);
 			else if (game->map[i][j] == 'E')
 				mlx_put_image_to_window(game->mlx,game-> mlx_win, game->door, j * 50, i * 50);
+			else if (game->map[i][j] == '0')
+				mlx_put_image_to_window(game->mlx,game-> mlx_win, game->background, j * 50, i * 50);
 			j++;
 		}
 		i++;

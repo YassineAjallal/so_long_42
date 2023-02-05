@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:24:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/05 14:56:47 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/05 16:42:23 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ typedef struct s_game
 	void *coin;
 	void *wall;
 	void *door;
+	void *background;
 	int img_width;
 	int img_height;
+	int posx;
+	int posy;
 } t_game;
 // get_next_line
 # ifndef BUFFER_SIZE
@@ -64,4 +67,7 @@ void	ft_free2d(char **str);
 // window.c
 void ft_window(t_game *game);
 void ft_wall(t_game *game);
+
+// hook.c
+int	key_hook(int keycode, t_game *game);
 #endif

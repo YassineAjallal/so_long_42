@@ -2,7 +2,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 NAME = so_long
-SRC = so_long.c checkex.c validmap.c validpath.c readmap.c get_next_line.c arrays.c window.c
+SRC = so_long.c checkex.c validmap.c validpath.c readmap.c get_next_line.c arrays.c window.c hooks.c
 LIB_PATH = ./libft/libft.a
 OBJ = $(SRC:.c=.o)
 
