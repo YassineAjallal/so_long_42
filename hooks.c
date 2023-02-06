@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 15:37:35 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/06 12:37:48 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/06 12:56:31 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,11 @@
 int	key_hook(int keycode, t_game *game)
 {
 	if (keycode == 124)
-	{
-		game->player = mlx_xpm_file_to_image(game->mlx, "./image/zombie.xpm", &game->img_width, &game->img_height);
 		right(game);
-	}
 	else if (keycode == 126)
 		up(game);
 	else if (keycode == 123)
-	{
-		game->player = mlx_xpm_file_to_image(game->mlx, "./image/zombiere.xpm", &game->img_width, &game->img_height);
 		left(game);
-	}
 	else if (keycode == 125)
 		down(game);
 	else if (keycode == 53)
@@ -39,7 +33,8 @@ int	key_hook(int keycode, t_game *game)
 void right(t_game *game)
 {
 	if(game->map[game->posy][game->posx + 1] != '1')
-	{	
+	{
+		game->player = mlx_xpm_file_to_image(game->mlx, "./image/zombie.xpm", &game->img_width, &game->img_height);
 		if (game->map[game->posy][game->posx + 1] == 'C')
 		{
 			game->collect--;
@@ -82,6 +77,7 @@ void left (t_game *game)
 {
 	if(game->map[game->posy][game->posx - 1] != '1')
 	{	
+		game->player = mlx_xpm_file_to_image(game->mlx, "./image/zombiere.xpm", &game->img_width, &game->img_height);
 		if (game->map[game->posy][game->posx - 1] == 'C')
 		{
 			game->collect--;
@@ -98,6 +94,7 @@ void left (t_game *game)
 		game->map[game->posy][game->posx] = '0';
 		ft_wall(game);
 	}
+	ft_wall(game);
 }
 void down(t_game *game)
 {
