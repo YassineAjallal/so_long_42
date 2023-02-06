@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 19:30:06 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/04 20:12:12 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/06 12:28:05 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,39 +74,36 @@ int checkwall(char **map)
 	return (1);
 }
 
-int checkchar(char **map)
+int checkchar(t_game *game)
 {
 	int i;
 	int j;
-	int player;
-	int exit;
-	int collect;
 
 	i = 0;
-	player = 0;
-	exit = 0;
-	collect = 0;
-	while(map[i])
+	game->player = 0;
+	game->exit = 0;
+	game->collect = 0;
+	while(game->map[i])
 	{
 		j = 0;
-		while (j < ft_strlennl(map[i]))
+		while (j < ft_strlennl(game->map[i]))
 		{
-			if (map[i][j] != 'C' && map[i][j] != 'P' && map[i][j] != 'E' && map[i][j] != '1' 
-				&& map[i][j] != '0')
+			if (game->map[i][j] != 'C' && game->map[i][j] != 'P' && game->map[i][j] != 'E' && game->map[i][j] != '1' 
+				&& game->map[i][j] != '0')
 			{
 				return (0);
 			}
-			if (map[i][j] == 'C')
-				collect++;
-			else if (map[i][j] == 'P')
-				player++;
-			else if (map[i][j] == 'E')
-				exit++;
+			if (game->map[i][j] == 'C')
+				game->collect++;
+			else if (game->map[i][j] == 'P')
+				game->positions++;
+			else if (game->map[i][j] == 'E')
+				game->exit++;
 			j++;
 		}
 		i++;
 	}
-	if (collect < 1 || player != 1 || exit != 1)
+	if (game->collect < 1 || game->positions != 1 || game->exit != 1)
 		return (0);
 	return (1);
 }

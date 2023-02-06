@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:24:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/05 16:42:23 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/06 12:20:56 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,22 @@ typedef struct s_game
 	char **map;
 	void *mlx;
 	void *mlx_win;
+	
 	void *player;
 	void *coin;
 	void *wall;
 	void *door;
+	
 	void *background;
 	int img_width;
 	int img_height;
 	int posx;
 	int posy;
+
+	int collect;
+	int exit;
+	int positions;
+	
 } t_game;
 // get_next_line
 # ifndef BUFFER_SIZE
@@ -56,7 +63,7 @@ void ft_fill(char **map);
 int ft_checkvalid(char **map);
 
 int checkwall(char **map);
-int checkchar(char **map);
+int checkchar(t_game *game);
 int checklen(char **map);
 int isequal(char *line);
 int ft_strlennl(char *str);
@@ -70,4 +77,8 @@ void ft_wall(t_game *game);
 
 // hook.c
 int	key_hook(int keycode, t_game *game);
+void	left(t_game *game);
+void	up(t_game *game);
+void right (t_game *game);
+void down(t_game *game);
 #endif
