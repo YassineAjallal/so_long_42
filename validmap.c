@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 19:30:06 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/06 12:28:05 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/06 15:48:09 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int checkchar(t_game *game)
 	int j;
 
 	i = 0;
-	game->player = 0;
+	game->positions = 0;
 	game->exit = 0;
 	game->collect = 0;
 	while(game->map[i])

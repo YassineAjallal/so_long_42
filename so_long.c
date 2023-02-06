@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:57:28 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/06 12:26:38 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/06 14:54:44 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ int main(int ac, char **av)
 	}
 
 	game = malloc(sizeof(t_game));
-	if (!game)
+	game->pcoord = malloc(sizeof(t_coord));
+	game->ecoord = malloc(sizeof(t_coord));
+	if (!game || !game->pcoord || !game->ecoord)
 		return (0);
 	game->map = readmap(av[1]);
 	if (!checkwall(game->map) || !checkchar(game))
@@ -51,8 +53,9 @@ int main(int ac, char **av)
 	ft_free2d(game->map);
 
  	/*--------------------------*/
-	game->posx = 0;
-	game->posy = 0;
+	game->pcoord->i = 0;
+	game->pcoord->j = 0;
+	game->mouves = 0;
 	game->map = readmap(av[1]);
 	game->mlx = mlx_init();
 	ft_window(game);

@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:24:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/06 12:20:56 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/06 15:59:38 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 #include <stdio.h>
 #include <fcntl.h>
 
+typedef struct s_coord
+{
+	int i;
+	int j;
+} t_coord;
 
 typedef struct s_game 
 {
@@ -33,14 +38,18 @@ typedef struct s_game
 	void *background;
 	int img_width;
 	int img_height;
-	int posx;
-	int posy;
+
+	t_coord *pcoord;
+	t_coord *ecoord;
 
 	int collect;
 	int exit;
 	int positions;
+
+	int mouves;
 	
 } t_game;
+
 // get_next_line
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
@@ -81,4 +90,6 @@ void	left(t_game *game);
 void	up(t_game *game);
 void right (t_game *game);
 void down(t_game *game);
+
+void finish(t_game *game, int i, int j);
 #endif

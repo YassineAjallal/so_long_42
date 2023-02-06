@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 15:37:35 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/06 12:56:31 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/06 16:01:17 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,88 +32,80 @@ int	key_hook(int keycode, t_game *game)
 
 void right(t_game *game)
 {
-	if(game->map[game->posy][game->posx + 1] != '1')
+	if(game->map[game->pcoord->i][game->pcoord->j + 1] != '1')
 	{
 		game->player = mlx_xpm_file_to_image(game->mlx, "./image/zombie.xpm", &game->img_width, &game->img_height);
-		if (game->map[game->posy][game->posx + 1] == 'C')
+		game->mouves++;
+		if (game->map[game->pcoord->i][game->pcoord->j + 1] == 'C')
 		{
 			game->collect--;
-			game->map[game->posy][game->posx + 1] = '0';
+			game->map[game->pcoord->i][game->pcoord->j + 1] = '0';
 			ft_wall(game);
 		}
-		if (game->map[game->posy][game->posx + 1] == 'E')
-		{
-			mlx_destroy_window(game->mlx, game->mlx_win);
-			write(1, "you finish\n", 11);
-			exit(EXIT_SUCCESS);
-		}
-		game->map[game->posy][game->posx + 1] = 'P';
-		game->map[game->posy][game->posx] = '0';
+		finish(game, game->pcoord->i, game->pcoord->j + 1);
+		game->map[game->pcoord->i][game->pcoord->j + 1] = 'P';
+		game->map[game->pcoord->i][game->pcoord->j] = '0';
 		ft_wall(game);
+		ft_putnbr_fd(game->mouves, 1);
+		ft_putchar_fd('\n', 1);
 	}
 }
 void up(t_game *game)
 {
-	if(game->map[game->posy - 1][game->posx] != '1')
+	if(game->map[game->pcoord->i - 1][game->pcoord->j] != '1')
 	{	
-		if (game->map[game->posy - 1][game->posx] == 'C')
+		game->mouves++;
+		if (game->map[game->pcoord->i - 1][game->pcoord->j] == 'C')
 		{
 			game->collect--;
-			game->map[game->posy - 1][game->posx] = '0';
+			game->map[game->pcoord->i - 1][game->pcoord->j] = '0';
 			ft_wall(game);
 		}
-		if (game->map[game->posy - 1][game->posx] == 'E')
-		{
-			mlx_destroy_window(game->mlx, game->mlx_win);
-			write(1, "you finish\n", 11);
-			exit(EXIT_SUCCESS);
-		}
-		game->map[game->posy - 1][game->posx] = 'P';
-		game->map[game->posy][game->posx] = '0';
+		finish(game, game->pcoord->i - 1, game->pcoord->j);
+		game->map[game->pcoord->i - 1][game->pcoord->j] = 'P';
+		game->map[game->pcoord->i][game->pcoord->j] = '0';
 		ft_wall(game);
+		ft_putnbr_fd(game->mouves, 1);
+		ft_putchar_fd('\n', 1);
 	}
 }
 void left (t_game *game)
 {
-	if(game->map[game->posy][game->posx - 1] != '1')
-	{	
+	if(game->map[game->pcoord->i][game->pcoord->j - 1] != '1')
+	{
+		game->mouves++;
 		game->player = mlx_xpm_file_to_image(game->mlx, "./image/zombiere.xpm", &game->img_width, &game->img_height);
-		if (game->map[game->posy][game->posx - 1] == 'C')
+		if (game->map[game->pcoord->i][game->pcoord->j - 1] == 'C')
 		{
 			game->collect--;
-			game->map[game->posy][game->posx - 1] = '0';
+			game->map[game->pcoord->i][game->pcoord->j - 1] = '0';
 			ft_wall(game);
 		}
-		if (game->map[game->posy][game->posx - 1] == 'E')
-		{
-			mlx_destroy_window(game->mlx, game->mlx_win);
-			write(1, "you finish\n", 11);
-			exit(EXIT_SUCCESS);
-		}
-		game->map[game->posy][game->posx - 1] = 'P';
-		game->map[game->posy][game->posx] = '0';
+		finish(game, game->pcoord->i, game->pcoord->j - 1);
+		game->map[game->pcoord->i][game->pcoord->j - 1] = 'P';
+		game->map[game->pcoord->i][game->pcoord->j] = '0';
 		ft_wall(game);
 	}
 	ft_wall(game);
+	ft_putnbr_fd(game->mouves, 1);
+	ft_putchar_fd('\n', 1);
 }
 void down(t_game *game)
 {
-	if(game->map[game->posy + 1][game->posx] != '1')
-	{	
-		if (game->map[game->posy + 1][game->posx] == 'C')
+	if(game->map[game->pcoord->i + 1][game->pcoord->j] != '1')
+	{
+		game->mouves++;
+		if (game->map[game->pcoord->i + 1][game->pcoord->j] == 'C')
 		{
 			game->collect--;
-			game->map[game->posy + 1][game->posx] = '0';
+			game->map[game->pcoord->i + 1][game->pcoord->j] = '0';
 			ft_wall(game);
 		}
-		if (game->map[game->posy + 1][game->posx] == 'E')
-		{
-			mlx_destroy_window(game->mlx, game->mlx_win);
-			write(1, "you finish\n", 11);
-			exit(EXIT_SUCCESS);
-		}
-		game->map[game->posy + 1][game->posx] = 'P';
-		game->map[game->posy][game->posx] = '0';
+		finish(game, game->pcoord->i + 1, game->pcoord->j);
+		game->map[game->pcoord->i + 1][game->pcoord->j] = 'P';
+		game->map[game->pcoord->i][game->pcoord->j] = '0';
 		ft_wall(game);
+		ft_putnbr_fd(game->mouves, 1);
+		ft_putchar_fd('\n', 1);
 	}
 }
