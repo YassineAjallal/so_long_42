@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:22:14 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/04 14:55:25 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/07 14:38:13 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	ft_checkex(char *file)
 {
-	char *tmp;
+	char	*tmp;
+
 	tmp = file + (ft_strlen(file) - 4);
 	if (ft_strnstr(tmp, ".ber", 4))
 		return (1);

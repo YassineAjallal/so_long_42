@@ -6,17 +6,16 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:57:28 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/06 14:54:44 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/07 14:47:00 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_game *game;
-	
+	t_game	*game;
+
 	if (ac != 2)
 	{
 		ft_putstr_fd("Error\n", 2);
@@ -29,7 +28,6 @@ int main(int ac, char **av)
 		ft_putstr_fd("Extension Not Valid\n", 2);
 		exit(EXIT_FAILURE);
 	}
-
 	game = malloc(sizeof(t_game));
 	game->pcoord = malloc(sizeof(t_coord));
 	game->ecoord = malloc(sizeof(t_coord));
@@ -51,8 +49,6 @@ int main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 	ft_free2d(game->map);
-
- 	/*--------------------------*/
 	game->pcoord->i = 0;
 	game->pcoord->j = 0;
 	game->mouves = 0;

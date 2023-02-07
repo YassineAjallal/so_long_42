@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 15:37:35 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/06 16:01:17 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/07 14:43:24 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ int	key_hook(int keycode, t_game *game)
 	return (0);
 }
 
-void right(t_game *game)
+void	right(t_game *game)
 {
-	if(game->map[game->pcoord->i][game->pcoord->j + 1] != '1')
+	if (game->map[game->pcoord->i][game->pcoord->j + 1] != '1')
 	{
-		game->player = mlx_xpm_file_to_image(game->mlx, "./image/zombie.xpm", &game->img_width, &game->img_height);
+		game->player = mlx_xpm_file_to_image(game->mlx, "./image/zombie.xpm",
+				&game->img_width, &game->img_height);
 		game->mouves++;
 		if (game->map[game->pcoord->i][game->pcoord->j + 1] == 'C')
 		{
@@ -50,9 +51,10 @@ void right(t_game *game)
 		ft_putchar_fd('\n', 1);
 	}
 }
-void up(t_game *game)
+
+void	up(t_game *game)
 {
-	if(game->map[game->pcoord->i - 1][game->pcoord->j] != '1')
+	if (game->map[game->pcoord->i - 1][game->pcoord->j] != '1')
 	{	
 		game->mouves++;
 		if (game->map[game->pcoord->i - 1][game->pcoord->j] == 'C')
@@ -69,12 +71,14 @@ void up(t_game *game)
 		ft_putchar_fd('\n', 1);
 	}
 }
-void left (t_game *game)
+
+void	left(t_game *game)
 {
-	if(game->map[game->pcoord->i][game->pcoord->j - 1] != '1')
+	if (game->map[game->pcoord->i][game->pcoord->j - 1] != '1')
 	{
 		game->mouves++;
-		game->player = mlx_xpm_file_to_image(game->mlx, "./image/zombiere.xpm", &game->img_width, &game->img_height);
+		game->player = mlx_xpm_file_to_image(game->mlx, "./image/zombiere.xpm",
+				&game->img_width, &game->img_height);
 		if (game->map[game->pcoord->i][game->pcoord->j - 1] == 'C')
 		{
 			game->collect--;
@@ -85,14 +89,14 @@ void left (t_game *game)
 		game->map[game->pcoord->i][game->pcoord->j - 1] = 'P';
 		game->map[game->pcoord->i][game->pcoord->j] = '0';
 		ft_wall(game);
+		ft_putnbr_fd(game->mouves, 1);
+		ft_putchar_fd('\n', 1);
 	}
-	ft_wall(game);
-	ft_putnbr_fd(game->mouves, 1);
-	ft_putchar_fd('\n', 1);
 }
-void down(t_game *game)
+
+void	down(t_game *game)
 {
-	if(game->map[game->pcoord->i + 1][game->pcoord->j] != '1')
+	if (game->map[game->pcoord->i + 1][game->pcoord->j] != '1')
 	{
 		game->mouves++;
 		if (game->map[game->pcoord->i + 1][game->pcoord->j] == 'C')

@@ -6,29 +6,29 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:56:21 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/04 20:14:24 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/07 14:46:07 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int numberline(char **map)
+int	numberline(char **map)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(map[i])
+	while (map[i])
 		i++;
 	return (i);
 }
 
-char **readmap(char *path)
+char	**readmap(char *path)
 {
-	int i;
-	int fd;
-	int j;
-	char **lines;
-	char *line;
+	int		i;
+	int		fd;
+	int		j;
+	char	**lines;
+	char	*line;
 
 	i = 0;
 	j = 0;
