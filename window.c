@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 00:12:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/06 15:49:02 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:09:57 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,11 @@ void ft_wall(t_game *game)
 			}
 			else if (game->map[i][j] == 'C')
 				mlx_put_image_to_window(game->mlx, game->mlx_win, game->coin, j * 50, i * 50);
-			else if (game->map[i][j] == 'E' && game->collect == 0)
-				mlx_put_image_to_window(game->mlx,game-> mlx_win, game->door, j * 50, i * 50);
+			else if (game->map[i][j] == 'E')
+			{
+				game->ecoord->i = i;
+				game->ecoord->j = j;
+			}
 			else if (game->map[i][j] == '0' || game->map[i][j] == 'E')
 				mlx_put_image_to_window(game->mlx,game-> mlx_win, game->background, j * 50, i * 50);
 			j++;
