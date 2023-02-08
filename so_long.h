@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:24:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/07 15:01:18 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/08 16:38:40 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@
 # include <mlx.h>
 # include <stdio.h>
 # include <fcntl.h>
+
+#ifndef SCREEN_WIDTH
+# define SCREEN_WIDTH 5120
+#endif
+
+#ifndef SCREEN_HEIGHT
+# define SCREEN_HEIGHT 2880
+#endif
 
 typedef struct s_coord
 {
@@ -42,6 +50,9 @@ typedef struct s_game
 	int		exit;
 	int		positions;
 	int		mouves;
+
+	int		line;
+	int		len;
 }	t_game;
 
 // get_next_line

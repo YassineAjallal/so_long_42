@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:57:28 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/07 17:55:08 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/08 16:39:48 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	main(int ac, char **av)
 	if (!game || !game->pcoord || !game->ecoord)
 		return (0);
 	game->map = readmap(av[1]);
+	game->line = numberline(game->map);
+	game->len = ft_strlennl(game->map[0]);
 	if (!checkwall(game->map) || !checkchar(game))
 	{
 		ft_putstr_fd("Error\n", 2);
@@ -45,6 +47,13 @@ int	main(int ac, char **av)
 	{
 		ft_putstr_fd("Error\n", 2);
 		ft_putstr_fd("Invalid PATH in map\n", 2);
+		ft_free2d(game->map);
+		exit(EXIT_FAILURE);
+	}
+	else if (game->line * 50 > SCREEN_HEIGHT || game->len * 50 > SCREEN_WIDTH)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("map is to long\n", 2);
 		ft_free2d(game->map);
 		exit(EXIT_FAILURE);
 	}

@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 00:12:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/08 16:14:31 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/08 16:39:22 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,7 @@
 
 void	ft_window(t_game *game)
 {
-	int	line;
-	int	len;
-
-	line = numberline(game->map);
-	len = ft_strlennl(game->map[0]);
-	game->mlx_win = mlx_new_window(game->mlx, len * 50, line * 50, "so_long");
+	game->mlx_win = mlx_new_window(game->mlx, game->len * 50, game->line * 50, "so_long");
 	game->player = mlx_xpm_file_to_image(game->mlx, "./image/zombie.xpm",
 			&game->width, &game->height);
 	ft_wall(game);
