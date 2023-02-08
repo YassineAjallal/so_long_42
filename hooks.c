@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 15:37:35 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/07 14:43:24 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/08 16:15:58 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	right(t_game *game)
 	if (game->map[game->pcoord->i][game->pcoord->j + 1] != '1')
 	{
 		game->player = mlx_xpm_file_to_image(game->mlx, "./image/zombie.xpm",
-				&game->img_width, &game->img_height);
+				&game->width, &game->height);
 		game->mouves++;
 		if (game->map[game->pcoord->i][game->pcoord->j + 1] == 'C')
 		{
@@ -45,7 +45,14 @@ void	right(t_game *game)
 		}
 		finish(game, game->pcoord->i, game->pcoord->j + 1);
 		game->map[game->pcoord->i][game->pcoord->j + 1] = 'P';
-		game->map[game->pcoord->i][game->pcoord->j] = '0';
+		if(game->pcoord->i == game->ecoord->i && game->pcoord->j == game->ecoord->j)
+		{
+			mlx_put_image_to_window(game->mlx, game-> mlx_win,
+					game->background, game->pcoord->j * 50, game->pcoord->i * 50);
+			game->map[game->pcoord->i][game->pcoord->j] = 'E';
+		}
+		else
+			game->map[game->pcoord->i][game->pcoord->j] = '0';
 		ft_wall(game);
 		ft_putnbr_fd(game->mouves, 1);
 		ft_putchar_fd('\n', 1);
@@ -65,7 +72,14 @@ void	up(t_game *game)
 		}
 		finish(game, game->pcoord->i - 1, game->pcoord->j);
 		game->map[game->pcoord->i - 1][game->pcoord->j] = 'P';
-		game->map[game->pcoord->i][game->pcoord->j] = '0';
+		if(game->pcoord->i == game->ecoord->i && game->pcoord->j == game->ecoord->j)
+		{
+			mlx_put_image_to_window(game->mlx, game-> mlx_win,
+					game->background, game->pcoord->j * 50, game->pcoord->i * 50);
+			game->map[game->pcoord->i][game->pcoord->j] = 'E';
+		}
+		else
+			game->map[game->pcoord->i][game->pcoord->j] = '0';
 		ft_wall(game);
 		ft_putnbr_fd(game->mouves, 1);
 		ft_putchar_fd('\n', 1);
@@ -78,7 +92,7 @@ void	left(t_game *game)
 	{
 		game->mouves++;
 		game->player = mlx_xpm_file_to_image(game->mlx, "./image/zombiere.xpm",
-				&game->img_width, &game->img_height);
+				&game->width, &game->height);
 		if (game->map[game->pcoord->i][game->pcoord->j - 1] == 'C')
 		{
 			game->collect--;
@@ -87,7 +101,14 @@ void	left(t_game *game)
 		}
 		finish(game, game->pcoord->i, game->pcoord->j - 1);
 		game->map[game->pcoord->i][game->pcoord->j - 1] = 'P';
-		game->map[game->pcoord->i][game->pcoord->j] = '0';
+		if(game->pcoord->i == game->ecoord->i && game->pcoord->j == game->ecoord->j)
+		{
+			mlx_put_image_to_window(game->mlx, game-> mlx_win,
+					game->background, game->pcoord->j * 50, game->pcoord->i * 50);
+			game->map[game->pcoord->i][game->pcoord->j] = 'E';
+		}
+		else
+			game->map[game->pcoord->i][game->pcoord->j] = '0';
 		ft_wall(game);
 		ft_putnbr_fd(game->mouves, 1);
 		ft_putchar_fd('\n', 1);
@@ -107,7 +128,14 @@ void	down(t_game *game)
 		}
 		finish(game, game->pcoord->i + 1, game->pcoord->j);
 		game->map[game->pcoord->i + 1][game->pcoord->j] = 'P';
-		game->map[game->pcoord->i][game->pcoord->j] = '0';
+		if(game->pcoord->i == game->ecoord->i && game->pcoord->j == game->ecoord->j)
+		{
+			mlx_put_image_to_window(game->mlx, game-> mlx_win,
+					game->background, game->pcoord->j * 50, game->pcoord->i * 50);
+			game->map[game->pcoord->i][game->pcoord->j] = 'E';
+		}
+		else
+			game->map[game->pcoord->i][game->pcoord->j] = '0';
 		ft_wall(game);
 		ft_putnbr_fd(game->mouves, 1);
 		ft_putchar_fd('\n', 1);
