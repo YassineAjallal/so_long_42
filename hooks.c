@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 15:37:35 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/08 16:15:58 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/09 13:05:30 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,7 @@ void	right(t_game *game)
 		else
 			game->map[game->pcoord->i][game->pcoord->j] = '0';
 		ft_wall(game);
-		ft_putnbr_fd(game->mouves, 1);
-		ft_putchar_fd('\n', 1);
+		pmouve("mouves -----> %d\n", game->mouves);
 	}
 }
 
@@ -81,8 +80,7 @@ void	up(t_game *game)
 		else
 			game->map[game->pcoord->i][game->pcoord->j] = '0';
 		ft_wall(game);
-		ft_putnbr_fd(game->mouves, 1);
-		ft_putchar_fd('\n', 1);
+		pmouve("mouves -----> %d\n", game->mouves);
 	}
 }
 
@@ -110,8 +108,7 @@ void	left(t_game *game)
 		else
 			game->map[game->pcoord->i][game->pcoord->j] = '0';
 		ft_wall(game);
-		ft_putnbr_fd(game->mouves, 1);
-		ft_putchar_fd('\n', 1);
+		pmouve("mouves -----> %d\n", game->mouves);
 	}
 }
 
@@ -137,7 +134,6 @@ void	down(t_game *game)
 		else
 			game->map[game->pcoord->i][game->pcoord->j] = '0';
 		ft_wall(game);
-		ft_putnbr_fd(game->mouves, 1);
-		ft_putchar_fd('\n', 1);
+		pmouve("mouves -----> %d\n", game->mouves);
 	}
 }

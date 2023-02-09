@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   finish.c                                           :+:      :+:    :+:   */
+/*   pmouve.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 15:57:56 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/09 13:13:12 by yajallal         ###   ########.fr       */
+/*   Created: 2022/10/22 00:28:37 by yajallal          #+#    #+#             */
+/*   Updated: 2023/02/09 13:05:46 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	finish(t_game *game, int i, int j)
+void	pmouve(char *s, ...)
 {
-	if (game->map[i][j] == 'E' && game->collect == 0)
+	va_list	par;
+	int		i;
+
+	va_start(par, s);
+	i = 0;
+	while (s[i])
 	{
-		mlx_destroy_window(game->mlx, game->mlx_win);
-		pmouve("congratulations you win\n");
-		exit(EXIT_SUCCESS);
+		if (s[i] == '%')
+		{
+			i++;
+			if (s[i] == 'd')
+				ft_putnbr_fd(va_arg(par, int), 1);
+		}
+		else
+			ft_putchar_fd(s[i], 1);
+		if (s[i])
+			i++;
 	}
 }
