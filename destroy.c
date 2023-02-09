@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   finish.c                                           :+:      :+:    :+:   */
+/*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 15:57:56 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/09 13:31:44 by yajallal         ###   ########.fr       */
+/*   Created: 2023/02/09 13:22:28 by yajallal          #+#    #+#             */
+/*   Updated: 2023/02/09 13:37:57 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	finish(t_game *game, int i, int j)
+int destroy(t_game *game)
 {
-	if (game->map[i][j] == 'E' && game->collect == 0)
-	{
-		destroy(game);
-		pmouve("congratulations you win\n");
-		exit(EXIT_SUCCESS);
-	}
+	mlx_destroy_image(game->mlx, game->player);
+	mlx_destroy_image(game->mlx, game->coin);
+	mlx_destroy_image(game->mlx, game->background);
+	mlx_destroy_image(game->mlx, game->wall);
+	mlx_destroy_image(game->mlx, game->door);
+	mlx_destroy_window(game->mlx, game->mlx_win);
+	return(0);
+}
+
+int ondestroy(t_game *game)
+{
+	destroy(game);
+	pmouve("Window closed\n");
+	exit(EXIT_SUCCESS);
 }

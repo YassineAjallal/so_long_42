@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:57:28 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/08 17:16:29 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/09 13:38:24 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	main(int ac, char **av)
 	game->map = readmap(av[1]);
 	game->mlx = mlx_init();
 	ft_window(game);
-	mlx_hook(game->mlx_win, 2, 0, &key_hook, game);
+	mlx_hook(game->mlx_win, 2, 0, &directions, game);
+	mlx_hook(game->mlx_win, 17, 0, &ondestroy, game);
 	mlx_loop(game->mlx);
+	exit(EXIT_SUCCESS);
 }

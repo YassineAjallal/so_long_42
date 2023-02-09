@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:24:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/09 13:05:59 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/09 13:38:07 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	ft_window(t_game *game);
 void	ft_wall(t_game *game);
 
 // hook.c
-int		key_hook(int keycode, t_game *game);
+int		directions(int keycode, t_game *game);
 void	left(t_game *game);
 void	up(t_game *game);
 void	right(t_game *game);
@@ -99,6 +99,10 @@ void	down(t_game *game);
 
 void	finish(t_game *game, int i, int j);
 
-
+// pmouve.c
 void	pmouve(char *s, ...);
+
+// destroy.c
+int destroy(t_game *game);
+int ondestroy(t_game *game);
 #endif

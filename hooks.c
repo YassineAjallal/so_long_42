@@ -6,13 +6,13 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 15:37:35 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/09 13:05:30 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/09 13:26:54 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	key_hook(int keycode, t_game *game)
+int	directions(int keycode, t_game *game)
 {
 	if (keycode == 124)
 		right(game);
@@ -24,7 +24,7 @@ int	key_hook(int keycode, t_game *game)
 		down(game);
 	else if (keycode == 53)
 	{
-		mlx_destroy_window(game->mlx, game->mlx_win);
+		destroy(game);
 		exit(EXIT_SUCCESS);
 	}
 	return (0);
