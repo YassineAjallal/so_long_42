@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:57:28 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/10 18:26:24 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/10 22:26:20 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void	arg_error(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		print(2, "Error\n Bad Usage\n");
+		print(2, "Error\nBad Usage\n");
 		exit(EXIT_FAILURE);
 	}
 	if (!ft_checkex(av[1]))
 	{
-		print(2, "Error\n Invalid File\n");
+		print(2, "Error\nInvalid File\n");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -39,13 +39,13 @@ void	map_check(t_game *game, char **av)
 	}
 	else if (!ft_checkvalid(game->map))
 	{
-		print(2, "Error\n Invalid PATH\n");
+		print(2, "Error\nInvalid PATH\n");
 		ft_free2d(game->map);
 		exit(EXIT_FAILURE);
 	}
 	else if (game->line * 50 > SCREEN_HEIGHT || game->len * 50 > SCREEN_WIDTH)
 	{
-		print(2, "Error\n map to long\n");
+		print(2, "Error\nmap to long\n");
 		ft_free2d(game->map);
 		exit(EXIT_FAILURE);
 	}
@@ -63,17 +63,15 @@ void	init(t_game *game, char **av)
 	img = fill_images(game);
 	if (!img)
 	{
-		print(2, "Error\n image error\n");
-		free(game->mlx);
-		ft_free2d(game->map);
+		print(2, "Error\nimage error\n");
+		free_game(game);
 		exit(EXIT_FAILURE);
 	}
 	win = ft_window(game);
 	if (!win)
 	{
-		print(2, "Error\n window error\n");
-		free(game->mlx);
-		ft_free2d(game->map);
+		print(2, "Error\nwindow error\n");
+		free_game(game);
 		exit(EXIT_FAILURE);
 	}
 }

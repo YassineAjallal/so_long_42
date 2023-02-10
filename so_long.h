@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:24:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/10 19:02:30 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/10 22:08:03 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	init(t_game *game, char **av);
 
 // arrays.c
 void	ft_free2d(char **str);
+void free_game(t_game *game);
 
 // checkex.c
 int		ft_checkex(char *file);
