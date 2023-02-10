@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:24:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/10 16:40:30 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/10 17:11:39 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ void	print(int fd, char *s, ...);
 // destroy.c
 void destroy(t_game *game);
 int ondestroy(t_game *game);
+
+void	ft_player(t_game *game, char *img);
 
 int fill_images(t_game *game);
 #endif

@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 00:12:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/10 16:38:33 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/10 17:12:15 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ int	ft_window(t_game *game)
 			&game->width, &game->height);
 	if (!game->player)
 	{
-		return (0);	
-		
+		destroy(game);
+		print(2, "Error\n image error\n");
+		exit(EXIT_FAILURE);
 	}
 	ft_images(game);
 	return (1);
