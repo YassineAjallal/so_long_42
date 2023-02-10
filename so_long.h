@@ -6,27 +6,34 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:24:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/10 18:33:46 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/10 19:01:09 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+// includes
 # include "./libft/libft.h"
 # include <mlx.h>
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdarg.h>
 
-#ifndef SCREEN_WIDTH
-# define SCREEN_WIDTH 5120
-#endif
+// define
+# ifndef SCREEN_WIDTH
+#  define SCREEN_WIDTH 5120
+# endif
 
-#ifndef SCREEN_HEIGHT
-# define SCREEN_HEIGHT 2880
-#endif
+# ifndef SCREEN_HEIGHT
+#  define SCREEN_HEIGHT 2880
+# endif
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+// struct
 typedef struct s_coord
 {
 	int	i;
@@ -56,59 +63,68 @@ typedef struct s_game
 	int		len;
 }	t_game;
 
-// get_next_line
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
-
+// get_next_line.c
 char	*get_next_line(int fd);
 char	*ft_read(int fd, char *save);
 char	*ft_copy(char *save);
 char	*ft_getnews(char *save);
 
 // so_long.c
+void	arg_error(int ac, char **av);
+void	map_check(t_game *game, char **av);
+void	init(t_game *game, char **av);
 
+// arrays.c
+void	ft_free2d(char **str);
+
+// checkex.c
 int		ft_checkex(char *file);
 
+// destroy.c
+void	destroy(t_game *game);
+int		ondestroy(t_game *game);
+
+// directions.c
+void	right(t_game *game);
+void	up(t_game *game);
+void	left(t_game *game);
+void	down(t_game *game);
+
+// finish.c
+void	finish(t_game *game, int i, int j);
+
+// ft_strlennl.c
+int	ft_strlennl(char *str);
+
+// hooks.c
+int		directions(int keycode, t_game *game);
+void	ft_player(t_game *game, char *img);
+
+// images.c
+int		fill_images(t_game *game);
+
+// print.c
+void	print(int fd, char *s, ...);
+
+// readmap.c
 int		numberline(char **map);
+int		readfile(int fd);
 char	**readmap(char *path);
 
+// validmap.c
+int		checklen(char **map);
+int		isequal(char *line);
+int		checkwall(char **map);
+int		valid_char(char c);
+int		checkchar(t_game *game);
+
+// validpath.c
 void	ft_replace(char **map);
 void	ft_fill(char **map);
 int		ft_checkvalid(char **map);
 
-int		checkwall(char **map);
-int		checkchar(t_game *game);
-int		checklen(char **map);
-int		isequal(char *line);
-
-
-int		ft_strlennl(char *str);
-
-// arrays.c 
-void	ft_free2d(char **str);
-
-// window.c
+//  window.c
 int		ft_window(t_game *game);
+void	ft_put_image(t_game *game, int i, int j);
 void	ft_images(t_game *game);
-
-// hook.c
-int		directions(int keycode, t_game *game);
-void	left(t_game *game);
-void	up(t_game *game);
-void	right(t_game *game);
-void	down(t_game *game);
-
-void	finish(t_game *game, int i, int j);
-
-// pmouve.c
-void	print(int fd, char *s, ...);
-
-// destroy.c
-void destroy(t_game *game);
-int ondestroy(t_game *game);
-
-void	ft_player(t_game *game, char *img);
-
-int fill_images(t_game *game);
 #endif
