@@ -10,11 +10,11 @@ OBJ = $(SRC:.c=.o)
 	@$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
 all: $(NAME)
-	@echo "so_long : done"
 
 $(NAME): $(OBJ)
 	@make -C ./libft
 	@$(CC) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(LIB_PATH)
+	@echo "so_long : done"
 
 
 clean:
