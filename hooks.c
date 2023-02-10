@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 15:37:35 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/10 17:01:28 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/10 19:03:15 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	directions(int keycode, t_game *game)
 	else if (keycode == 53)
 	{
 		destroy(game);
+		print(1, "window closed\n");
 		exit(EXIT_SUCCESS);
 	}
 	return (0);
