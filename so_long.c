@@ -6,13 +6,13 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:57:28 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/10 16:45:48 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/10 18:26:24 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void arg_error(int ac, char **av)
+void	arg_error(int ac, char **av)
 {
 	if (ac != 2)
 	{
@@ -26,7 +26,7 @@ void arg_error(int ac, char **av)
 	}
 }
 
-void map_check(t_game *game, char **av)
+void	map_check(t_game *game, char **av)
 {
 	game->map = readmap(av[1]);
 	game->line = numberline(game->map);
@@ -52,10 +52,11 @@ void map_check(t_game *game, char **av)
 	ft_free2d(game->map);
 }
 
-void init(t_game *game, char **av)
+void	init(t_game *game, char **av)
 {
-	int img;
-	int win;
+	int	img;
+	int	win;
+
 	game->mouves = 0;
 	game->map = readmap(av[1]);
 	game->mlx = mlx_init();
@@ -76,6 +77,7 @@ void init(t_game *game, char **av)
 		exit(EXIT_FAILURE);
 	}
 }
+
 int	main(int ac, char **av)
 {
 	t_game	*game;

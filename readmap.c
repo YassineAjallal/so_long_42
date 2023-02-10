@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:56:21 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/07 14:46:07 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/10 18:25:17 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,12 @@ int	numberline(char **map)
 	return (i);
 }
 
-char	**readmap(char *path)
+int	readfile(int fd)
 {
-	int		i;
-	int		fd;
-	int		j;
-	char	**lines;
 	char	*line;
+	int		i;
 
 	i = 0;
-	j = 0;
-	fd = open(path, O_RDONLY);
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
@@ -40,17 +35,32 @@ char	**readmap(char *path)
 		free(line);
 		line = get_next_line(fd);
 	}
-	close(fd);
-	lines = malloc(sizeof(char *) * (i + 1));
+	return (i);
+}
+
+char	**readmap(char *path)
+{
+	int		i;
+	int		fd;
+	int		linefile;
+	char	**lines;
+
+	i = 0;
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		return (NULL);
+	linefile = readfile(fd);
+	lines = malloc(sizeof(char *) * (linefile + 1));
 	if (!lines)
 		return (NULL);
+	close(fd);
 	fd = open(path, O_RDONLY);
-	while (j < i)
+	while (i < linefile)
 	{
-		lines[j] = get_next_line(fd);
-		j++;
+		lines[i] = get_next_line(fd);
+		i++;
 	}
-	lines[j] = NULL;
+	lines[i] = NULL;
 	close(fd);
 	return (lines);
 }

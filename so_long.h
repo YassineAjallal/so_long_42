@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:24:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/10 17:11:39 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/10 18:33:46 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int		checkwall(char **map);
 int		checkchar(t_game *game);
 int		checklen(char **map);
 int		isequal(char *line);
+
+
 int		ft_strlennl(char *str);
 
 // arrays.c 

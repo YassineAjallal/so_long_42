@@ -6,21 +6,11 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 19:30:06 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/07 14:51:22 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/10 18:35:20 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	ft_strlennl(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] && str[i] != '\n')
-			i++;
-	return (i);
-}
 
 int	checklen(char **map)
 {
@@ -72,23 +62,28 @@ int	checkwall(char **map)
 	return (1);
 }
 
+int	valid_char(char c)
+{
+	if (c != 'C' && c != 'P' && c != 'E' && c != '1' && c != '0')
+		return (0);
+	return (1);
+}
+
 int	checkchar(t_game *game)
 {
 	int	i;
 	int	j;
 
-	i = 0;
+	i = -1;
 	game->positions = 0;
 	game->exit = 0;
 	game->collect = 0;
-	while (game->map[i])
+	while (game->map[++i])
 	{
-		j = 0;
-		while (j < ft_strlennl(game->map[i]))
+		j = -1;
+		while (++j < ft_strlennl(game->map[i]))
 		{
-			if (game->map[i][j] != 'C' && game->map[i][j] != 'P'
-				&& game->map[i][j] != 'E' && game->map[i][j] != '1'
-				&& game->map[i][j] != '0')
+			if (!valid_char(game->map[i][j]))
 				return (0);
 			if (game->map[i][j] == 'C')
 				game->collect++;
@@ -96,9 +91,7 @@ int	checkchar(t_game *game)
 				game->positions++;
 			else if (game->map[i][j] == 'E')
 				game->exit++;
-			j++;
 		}
-		i++;
 	}
 	if (game->collect < 1 || game->positions != 1 || game->exit != 1)
 		return (0);

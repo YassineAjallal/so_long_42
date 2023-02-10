@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   ft_strlennl.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 00:28:37 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/10 18:18:15 by yajallal         ###   ########.fr       */
+/*   Created: 2023/02/10 18:33:08 by yajallal          #+#    #+#             */
+/*   Updated: 2023/02/10 18:33:20 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	print(int fd, char *s, ...)
+int	ft_strlennl(char *str)
 {
-	va_list	par;
-	int		i;
+	int	i;
 
-	va_start(par, s);
 	i = 0;
-	while (s[i])
-	{
-		if (s[i] == '%')
-		{
+	while (str[i] && str[i] != '\n')
 			i++;
-			if (s[i] == 'd')
-				ft_putnbr_fd(va_arg(par, int), fd);
-		}
-		else
-			ft_putchar_fd(s[i], fd);
-		if (s[i])
-			i++;
-	}
+	return (i);
 }
