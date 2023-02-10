@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:57:28 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/09 13:38:24 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:28:35 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int ac, char **av)
 {
 	t_game	*game;
+	int img;
 
 	if (ac != 2)
 	{
@@ -63,6 +64,14 @@ int	main(int ac, char **av)
 	game->mouves = 0;
 	game->map = readmap(av[1]);
 	game->mlx = mlx_init();
+	img = fill_images(game);
+	if (!img)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("please check your images\n", 2);
+		ft_free2d(game->map);
+		exit(EXIT_FAILURE);
+	}
 	ft_window(game);
 	mlx_hook(game->mlx_win, 2, 0, &directions, game);
 	mlx_hook(game->mlx_win, 17, 0, &ondestroy, game);

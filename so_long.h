@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:24:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/09 13:38:07 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:16:04 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	ft_free2d(char **str);
 
 // window.c
 void	ft_window(t_game *game);
-void	ft_wall(t_game *game);
+void	ft_images(t_game *game);
 
 // hook.c
 int		directions(int keycode, t_game *game);
@@ -103,6 +103,8 @@ void	finish(t_game *game, int i, int j);
 void	pmouve(char *s, ...);
 
 // destroy.c
-int destroy(t_game *game);
+void destroy(t_game *game);
 int ondestroy(t_game *game);
+
+int fill_images(t_game *game);
 #endif
