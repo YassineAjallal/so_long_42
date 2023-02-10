@@ -6,18 +6,26 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 00:12:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/09 15:26:51 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:38:33 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_window(t_game *game)
+int	ft_window(t_game *game)
 {
 	game->mlx_win = mlx_new_window(game->mlx, game->len * 50, game->line * 50, "so_long");
+	if (!game->mlx_win)
+		return (0);
 	game->player = mlx_xpm_file_to_image(game->mlx, "./image/zombie.xpm",
 			&game->width, &game->height);
+	if (!game->player)
+	{
+		return (0);	
+		
+	}
 	ft_images(game);
+	return (1);
 }
 
 void	ft_images(t_game *game)

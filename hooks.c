@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 15:37:35 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/09 15:11:48 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:41:18 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	right(t_game *game)
 		else
 			game->map[game->pcoord->i][game->pcoord->j] = '0';
 		ft_images(game);
-		pmouve("mouves -----> %d\n", game->mouves);
+		print(1, "mouves -----> %d\n", game->mouves);
 	}
 }
 
@@ -87,7 +87,7 @@ void	up(t_game *game)
 		else
 			game->map[game->pcoord->i][game->pcoord->j] = '0';
 		ft_images(game);
-		pmouve("mouves -----> %d\n", game->mouves);
+		print(1, "mouves -----> %d\n", game->mouves);
 	}
 }
 
@@ -114,7 +114,7 @@ void	left(t_game *game)
 		else
 			game->map[game->pcoord->i][game->pcoord->j] = '0';
 		ft_images(game);
-		pmouve("mouves -----> %d\n", game->mouves);
+		print(1, "mouves -----> %d\n", game->mouves);
 	}
 }
 
@@ -140,6 +140,6 @@ void	down(t_game *game)
 		else
 			game->map[game->pcoord->i][game->pcoord->j] = '0';
 		ft_images(game);
-		pmouve("mouves -----> %d\n", game->mouves);
+		print(1, "mouves -----> %d\n", game->mouves);
 	}
 }

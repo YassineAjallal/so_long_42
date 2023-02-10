@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:22:28 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/09 15:14:36 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:41:56 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ void destroy(t_game *game)
 int ondestroy(t_game *game)
 {
 	destroy(game);
-	pmouve("Window closed\n");
+	print(1, "Window closed\n");
 	exit(EXIT_SUCCESS);
 }

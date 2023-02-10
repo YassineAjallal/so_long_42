@@ -6,73 +6,88 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:57:28 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/09 15:28:35 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:45:48 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int ac, char **av)
+void arg_error(int ac, char **av)
 {
-	t_game	*game;
-	int img;
-
 	if (ac != 2)
 	{
-		ft_putstr_fd("Error\n", 2);
-		ft_putstr_fd("Bad Usage\n", 2);
+		print(2, "Error\n Bad Usage\n");
 		exit(EXIT_FAILURE);
 	}
 	if (!ft_checkex(av[1]))
 	{
-		ft_putstr_fd("Error\n", 2);
-		ft_putstr_fd("Extension Not Valid\n", 2);
+		print(2, "Error\n Invalid File\n");
 		exit(EXIT_FAILURE);
 	}
-	game = malloc(sizeof(t_game));
-	game->pcoord = malloc(sizeof(t_coord));
-	game->ecoord = malloc(sizeof(t_coord));
-	if (!game || !game->pcoord || !game->ecoord)
-		return (0);
+}
+
+void map_check(t_game *game, char **av)
+{
 	game->map = readmap(av[1]);
 	game->line = numberline(game->map);
 	game->len = ft_strlennl(game->map[0]);
 	if (!checkwall(game->map) || !checkchar(game))
 	{
-		ft_putstr_fd("Error\n", 2);
-		ft_putstr_fd("Invalid Map\n", 2);
+		print(2, "Error\n Invalid map\n");
 		ft_free2d(game->map);
 		exit(EXIT_FAILURE);
 	}
 	else if (!ft_checkvalid(game->map))
 	{
-		ft_putstr_fd("Error\n", 2);
-		ft_putstr_fd("Invalid PATH in map\n", 2);
+		print(2, "Error\n Invalid PATH\n");
 		ft_free2d(game->map);
 		exit(EXIT_FAILURE);
 	}
 	else if (game->line * 50 > SCREEN_HEIGHT || game->len * 50 > SCREEN_WIDTH)
 	{
-		ft_putstr_fd("Error\n", 2);
-		ft_putstr_fd("map is to long\n", 2);
+		print(2, "Error\n map to long\n");
 		ft_free2d(game->map);
 		exit(EXIT_FAILURE);
 	}
 	ft_free2d(game->map);
-	game->pcoord->i = 0;
-	game->pcoord->j = 0;
+}
+
+void init(t_game *game, char **av)
+{
+	int img;
+	int win;
 	game->mouves = 0;
 	game->map = readmap(av[1]);
 	game->mlx = mlx_init();
 	img = fill_images(game);
 	if (!img)
 	{
-		ft_putstr_fd("Error\n", 2);
-		ft_putstr_fd("please check your images\n", 2);
+		print(2, "Error\n image error\n");
+		free(game->mlx);
 		ft_free2d(game->map);
 		exit(EXIT_FAILURE);
 	}
-	ft_window(game);
+	win = ft_window(game);
+	if (!win)
+	{
+		print(2, "Error\n window error\n");
+		free(game->mlx);
+		ft_free2d(game->map);
+		exit(EXIT_FAILURE);
+	}
+}
+int	main(int ac, char **av)
+{
+	t_game	*game;
+
+	arg_error(ac, av);
+	game = malloc(sizeof(t_game));
+	game->pcoord = malloc(sizeof(t_coord));
+	game->ecoord = malloc(sizeof(t_coord));
+	if (!game || !game->pcoord || !game->ecoord)
+		return (0);
+	map_check(game, av);
+	init(game, av);
 	mlx_hook(game->mlx_win, 2, 0, &directions, game);
 	mlx_hook(game->mlx_win, 17, 0, &ondestroy, game);
 	mlx_loop(game->mlx);
