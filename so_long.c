@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:57:28 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/10 22:26:20 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/12 14:21:47 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,14 @@ void	init(t_game *game, char **av)
 	int	win;
 
 	game->mouves = 0;
+	game->pdir = 'n';
 	game->map = readmap(av[1]);
 	game->mlx = mlx_init();
 	img = fill_images(game);
 	if (!img)
 	{
 		print(2, "Error\nimage error\n");
+		free(game->mlx);
 		free_game(game);
 		exit(EXIT_FAILURE);
 	}
@@ -84,8 +86,13 @@ int	main(int ac, char **av)
 	game = malloc(sizeof(t_game));
 	game->pcoord = malloc(sizeof(t_coord));
 	game->ecoord = malloc(sizeof(t_coord));
-	if (!game || !game->pcoord || !game->ecoord)
+	if (!game)
 		return (0);
+	if (!game->pcoord || !game->ecoord)
+	{
+		free(game);	
+		return (0);
+	}
 	map_check(game, av);
 	init(game, av);
 	mlx_hook(game->mlx_win, 2, 0, &directions, game);

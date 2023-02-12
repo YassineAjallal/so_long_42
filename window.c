@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 00:12:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/10 20:00:04 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:14:19 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,15 @@ void	ft_images(t_game *game)
 {
 	int	i;
 	int	j;
+	int img;
 
+	destroy(game);
+	img = fill_images(game);
+	if (!img)
+	{
+		print(2, "Error\nimage error\n");
+		exit(EXIT_FAILURE);
+	}
 	i = 0;
 	while (game->map[i])
 	{

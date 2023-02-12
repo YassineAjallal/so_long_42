@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 15:00:02 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/10 18:17:50 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:12:20 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	fill_images(t_game *game)
 {
-	game->player = mlx_xpm_file_to_image(game->mlx, "./image/zombie.xpm",
-			&game->width, &game->height);
+	ft_player(game, game->pdir);
 	game->wall = mlx_xpm_file_to_image(game->mlx, "./image/walls.xpm",
 			&game->width, &game->height);
 	game->coin = mlx_xpm_file_to_image(game->mlx, "./image/food.xpm",

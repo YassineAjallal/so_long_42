@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:54:48 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/10 17:00:11 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:09:47 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	right(t_game *game)
 	if (game->map[game->pcoord->i][game->pcoord->j + 1] != '1')
 	{
 		game->mouves++;
-		ft_player(game, "./image/zombie.xpm");
+		game->pdir = 'n';
 		if (game->map[game->pcoord->i][game->pcoord->j + 1] == 'C')
 		{
 			game->collect--;
@@ -72,7 +72,7 @@ void	left(t_game *game)
 	if (game->map[game->pcoord->i][game->pcoord->j - 1] != '1')
 	{
 		game->mouves++;
-		ft_player(game, "./image/zombiere.xpm");
+		game->pdir = 'r';
 		if (game->map[game->pcoord->i][game->pcoord->j - 1] == 'C')
 		{
 			game->collect--;

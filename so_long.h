@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:24:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/10 22:08:03 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/12 14:19:48 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_game
 	void	*door;
 	void	*background;
 	int		width;
+	char	pdir;
 	int		height;
 	t_coord	*pcoord;
 	t_coord	*ecoord;
@@ -99,7 +100,7 @@ int		ft_strlennl(char *str);
 
 // hooks.c
 int		directions(int keycode, t_game *game);
-void	ft_player(t_game *game, char *img);
+void	ft_player(t_game *game, char pdir);
 
 // images.c
 int		fill_images(t_game *game);
