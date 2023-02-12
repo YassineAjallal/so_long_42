@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 15:00:02 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/12 17:03:29 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/12 17:10:22 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 int	fill_images(t_game *game)
 {
 	ft_player(game, game->pdir);
-	game->wall = mlx_xpm_file_to_image(game->mlx, "./image/walls.xpm",
+	game->wall = mlx_xpm_file_to_image(game->mlx, "./textures/walls.xpm",
 			&game->width, &game->height);
-	game->coin = mlx_xpm_file_to_image(game->mlx, "./image/food.xpm",
+	game->coin = mlx_xpm_file_to_image(game->mlx, "./textures/food.xpm",
 			&game->width, &game->height);
-	game->door = mlx_xpm_file_to_image(game->mlx, "./image/door.xpm",
+	game->door = mlx_xpm_file_to_image(game->mlx, "./textures/door.xpm",
 			&game->width, &game->height);
 	game->background = mlx_xpm_file_to_image(game->mlx,
-			"./image/background.xpm", &game->width, &game->height);
+			"./textures/background.xpm", &game->width, &game->height);
 	if (!game->player || !game->wall || !game->coin
 		|| !game->door || !game->background)
 	{

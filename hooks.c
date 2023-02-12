@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 15:37:35 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/12 17:01:09 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/12 17:11:08 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ int	directions(int keycode, t_game *game)
 void	ft_player(t_game *game, char pdir)
 {
 	if (pdir == 'n')
-		game->player = mlx_xpm_file_to_image(game->mlx, "./image/zombie.xpm",
+		game->player = mlx_xpm_file_to_image(game->mlx, "./textures/zombie.xpm",
 				&game->width, &game->height);
 	else
-		game->player = mlx_xpm_file_to_image(game->mlx, "./image/zombiere.xpm",
+		game->player = mlx_xpm_file_to_image(game->mlx, "./textures/zombiere.xpm",
 				&game->width, &game->height);
 	if (!game->player)
 	{
