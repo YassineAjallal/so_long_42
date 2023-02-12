@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:57:28 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/12 14:21:47 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:53:37 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,15 @@ void	init(t_game *game, char **av)
 	if (!img)
 	{
 		print(2, "Error\nimage error\n");
-		free(game->mlx);
 		free_game(game);
+		free(game->mlx);
 		exit(EXIT_FAILURE);
 	}
 	win = ft_window(game);
 	if (!win)
 	{
 		print(2, "Error\nwindow error\n");
+		free(game->mlx);
 		free_game(game);
 		exit(EXIT_FAILURE);
 	}
@@ -95,8 +96,8 @@ int	main(int ac, char **av)
 	}
 	map_check(game, av);
 	init(game, av);
-	mlx_hook(game->mlx_win, 2, 0, &directions, game);
 	mlx_hook(game->mlx_win, 17, 0, &ondestroy, game);
+	mlx_hook(game->mlx_win, 2, 0, &directions, game);
 	mlx_loop(game->mlx);
 	exit(EXIT_SUCCESS);
 }

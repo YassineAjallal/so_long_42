@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 15:37:35 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/12 14:21:42 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/12 16:47:52 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	ft_player(t_game *game, char pdir)
 	if (!game->player)
 	{
 		destroy(game);
-		free(game->mlx);
 		print(2, "Error\nimage error\n");
 		exit(EXIT_FAILURE);
 	}
