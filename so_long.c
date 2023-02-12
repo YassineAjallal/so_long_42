@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:57:28 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/12 15:53:37 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/12 17:05:32 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,14 @@ void	init(t_game *game, char **av)
 	if (!img)
 	{
 		print(2, "Error\nimage error\n");
-		free_game(game);
-		free(game->mlx);
+		ft_free2d(game->map);
 		exit(EXIT_FAILURE);
 	}
 	win = ft_window(game);
 	if (!win)
 	{
 		print(2, "Error\nwindow error\n");
-		free(game->mlx);
-		free_game(game);
+		ft_free2d(game->map);
 		exit(EXIT_FAILURE);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 00:12:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/12 16:51:33 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/12 16:57:37 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ int	ft_window(t_game *game)
 	game->mlx_win = mlx_new_window(game->mlx, game->len * 50,
 			game->line * 50, "so_long");
 	if (!game->mlx_win)
-	{
-		free(game->mlx);
 		return (0);
-	}
 	ft_images(game);
 	return (1);
 }
