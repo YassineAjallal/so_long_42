@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 00:12:46 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/12 16:57:37 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/12 17:07:29 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_images(t_game *game)
 {
 	int	i;
 	int	j;
-	int img;
+	int	img;
 
 	destroy(game);
 	img = fill_images(game);

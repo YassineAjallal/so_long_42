@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:22:22 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/12 15:41:06 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/12 17:06:14 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_free2d(char **str)
 	str = NULL;
 }
 
-void free_game(t_game *game)
+void	free_game(t_game *game)
 {
 	ft_free2d(game->map);
 	free(game->pcoord);

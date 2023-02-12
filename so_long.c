@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:57:28 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/12 17:05:32 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/12 17:07:03 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	main(int ac, char **av)
 		return (0);
 	if (!game->pcoord || !game->ecoord)
 	{
-		free(game);	
+		free(game);
 		return (0);
 	}
 	map_check(game, av);

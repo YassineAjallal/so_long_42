@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:22:28 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/12 16:58:45 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/12 17:06:34 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	destroy(t_game *game)
 int	ondestroy(t_game *game)
 {
 	destroy(game);
-	mlx_destroy_window(game->mlx, game->mlx_win);	
+	mlx_destroy_window(game->mlx, game->mlx_win);
 	print(1, "Window closed\n");
 	exit(EXIT_SUCCESS);
 }
