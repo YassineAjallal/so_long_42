@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:56:21 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/12 16:18:01 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/12 23:46:28 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ int	readfile(int fd)
 
 	i = 0;
 	line = get_next_line(fd);
+	if (!line)
+	{
+		print(2,"Error\nfile is empty Or does not exist\n");
+		exit(EXIT_FAILURE);
+	}
 	while (line != NULL)
 	{
 		i++;
@@ -48,7 +53,10 @@ char	**readmap(char *path)
 	i = 0;
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		return (NULL);
+	{
+		print(2,"Error\nNo such File or Directory\n");
+		exit(EXIT_FAILURE);
+	}
 	linefile = readfile(fd);
 	lines = malloc(sizeof(char *) * (linefile + 1));
 	if (!lines)

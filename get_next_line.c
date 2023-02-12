@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 03:34:16 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/04 14:46:17 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/12 23:43:35 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char	*get_next_line(int fd)
 	static char	*save;
 	char		*line;
 
-	if (fd == 1 || fd == 2 || read(fd, 0, 0) < 0)
+	if (fd == 1 || fd == 2 || read(fd, 0, 0) < 0 || fd < 0)
 	{
 		free(save);
 		save = NULL;
