@@ -6,7 +6,7 @@
 /*   By: yajallal < yajallal@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:56:21 by yajallal          #+#    #+#             */
-/*   Updated: 2023/02/12 23:46:28 by yajallal         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:00:50 by yajallal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	**readmap(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		print(2,"Error\nNo such File or Directory\n");
+		print(2,"Error\nMap not Found\n");
 		exit(EXIT_FAILURE);
 	}
 	linefile = readfile(fd);
